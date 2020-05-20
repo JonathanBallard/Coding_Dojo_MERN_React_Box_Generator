@@ -11,62 +11,41 @@ const Form = props => {
     const {colorArr, setColorArr } = props.props;
     const [ boxes, setBoxes ] = useState('');
     const { allB, setAllB } = props.props;
-    // console.log(props.props);
-    // console.log('colorArr:',colorArr);
-    const allBoxes = [];
-    const boxArr = [];
+
 
     const submitHandler = e => {
         // Add Box Here
         //      <Box info={{color:"Green"}}></Box>
         e.preventDefault();
-        allBoxes.push(color);
         function ab(ele, idx){
             return <Box key={idx} info={{color:ele}}></Box>;
         }
         if(allB.c1){
+            console.log('allB.c1a');
             setAllB(allB.colors.push(allB.c1));
+            setAllB({...allB,c1:color});
         }
-        setAllB({...allB,c1:color})
-        console.log('allBoxes.length', allBoxes.length)
+        else{
+            console.log('else1');
+            setAllB(allB.colors.push(color));
+        }
+        if(allB.colors){
+            console.log('allB.colors')
+            setAllB({...allB,c1:''})
+        }
+
+        console.log('allB.colors.length', allB.colors.length)
         return (
-            // setBoxes( 
-            //     <div>
-            //         { allB.map(ab) }
-            //     </div>
-            // )
+
             setBoxes( 
                 <div>
+
                     { allB.colors.map(ab) }
                 </div>
             )
         )
     }
 
-    //alternative
-    // const submitHandler = e => {
-    //     console.log('2colorArr:',colorArr);
-    //     // Add Box Here
-    //     //      <Box info={{color:"Green"}}></Box>
-    //     e.preventDefault();
-    //     console.log('3colorArr:',colorArr);
-    //     setColorArr( {value:color, arr:(colorArr.arr || [])} );
-    //     setColorArr( colorArr => {
-    //         const arr = [...(colorArr.arr || []), colorArr.value];
-    //     }
-    //     );
-    //     for(var i = 0; i < colorArr.arr.length; i++){
-    //         boxArr.push(<Box key={i} info={{color:colorArr.arr[i]}}></Box>);
-    //     }
-    //     console.log('colorArr', colorArr[0])
-    //     return (
-    //         setBoxes( 
-    //             <div>
-    //                 { boxArr }
-    //             </div>
-    //         )
-    //     )
-    // }
 
     
     const changeHandler = e => {

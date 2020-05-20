@@ -5,7 +5,7 @@ import Box from './components/box';
 import Form from './components/form';
 
 function App() {
-    const [color, setColor] = useState(0);
+    const [color, setColor] = useState('');
     const [allB, setAllB] = useState({
         colors:[],
         c1:'',

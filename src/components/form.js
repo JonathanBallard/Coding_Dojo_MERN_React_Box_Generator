@@ -8,7 +8,6 @@ import Box from './box';
 
 const Form = props => {
     const {color, setColor } = props.props;
-    const {colorArr, setColorArr } = props.props;
     const [ boxes, setBoxes ] = useState('');
     const { allB, setAllB } = props.props;
 
@@ -17,29 +16,33 @@ const Form = props => {
         // Add Box Here
         //      <Box info={{color:"Green"}}></Box>
         e.preventDefault();
+
+        // validate color
+        if(color == ''){
+            return alert('no color given');
+        }
+
         function ab(ele, idx){
             return <Box key={idx} info={{color:ele}}></Box>;
         }
         if(allB.c1){
-            console.log('allB.c1a');
             setAllB(allB.colors.push(allB.c1));
             setAllB({...allB,c1:color});
         }
         else{
-            console.log('else1');
             setAllB(allB.colors.push(color));
         }
         if(allB.colors){
-            console.log('allB.colors')
-            setAllB({...allB,c1:''})
+            setAllB({...allB,c1:''});
         }
 
-        console.log('allB.colors.length', allB.colors.length)
+        // Delete text from submission box here
+        setColor('');
+
         return (
 
             setBoxes( 
                 <div>
-
                     { allB.colors.map(ab) }
                 </div>
             )
@@ -61,7 +64,7 @@ const Form = props => {
             <form onSubmit={submitHandler}>
                 <div className="form-group">
                     <label htmlFor="colorInput">Color:</label>
-                    <input className="form-control" name="colorInput" onChange={changeHandler}></input>
+                    <input className="form-control" name="colorInput" onChange={changeHandler} value={color}></input>
                 </div>
                 <input className="btn btn-primary btn-lg" type="submit" value="Submit"/>
             </form>

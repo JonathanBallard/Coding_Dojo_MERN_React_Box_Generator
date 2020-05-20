@@ -10,8 +10,9 @@ const Form = props => {
     const {color, setColor } = props.props;
     const {colorArr, setColorArr } = props.props;
     const [ boxes, setBoxes ] = useState('');
+    const { allB, setAllB } = props.props;
     // console.log(props.props);
-    console.log('colorArr:',colorArr);
+    // console.log('colorArr:',colorArr);
     const allBoxes = [];
     const boxArr = [];
 
@@ -23,11 +24,20 @@ const Form = props => {
         function ab(ele, idx){
             return <Box key={idx} info={{color:ele}}></Box>;
         }
+        if(allB.c1){
+            setAllB(allB.colors.push(allB.c1));
+        }
+        setAllB({...allB,c1:color})
         console.log('allBoxes.length', allBoxes.length)
         return (
+            // setBoxes( 
+            //     <div>
+            //         { allB.map(ab) }
+            //     </div>
+            // )
             setBoxes( 
                 <div>
-                    { allBoxes.map(ab) }
+                    { allB.colors.map(ab) }
                 </div>
             )
         )

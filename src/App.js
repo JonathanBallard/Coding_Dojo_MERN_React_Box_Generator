@@ -6,16 +6,20 @@ import Form from './components/form';
 
 function App() {
     const [color, setColor] = useState(0);
+    const [allB, setAllB] = useState({
+        colors:[],
+        c1:'',
+    });
     const [colorArr, setColorArr] = useState(
         {
-            arr:[''],
-            value: ''
+            colors:[''],
+            c1: ''
         }
         )
-    console.log('AppcolorArr', colorArr);
+    // console.log('AppcolorArr', colorArr);
     return (
         <div className="App">
-            <Form props={{color:color, setColor:setColor, colorArr:colorArr, setColorArr:setColorArr}}></Form>
+            <Form props={{color:color, setColor:setColor, colorArr:colorArr, setColorArr:setColorArr, allB:allB, setAllB:setAllB}}></Form>
             
         </div>
     );
